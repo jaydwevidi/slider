@@ -8,17 +8,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/navView"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header_main"
-        app:menu="@menu/menu_sidebar">
 
-
-    </com.google.android.material.navigation.NavigationView>
 
 
 <ScrollView
@@ -30,17 +20,36 @@
         android:layout_height="wrap_content"
         tools:context=".MainActivity">
 
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            >
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/myToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#00cba9"
+                >
+
+            </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="50dp"
             android:background="@drawable/ic_wave_2"
             android:cropToPadding="true"
             app:layout_constraintEnd_toEndOf="parent"
 
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/appbar" />
 
         <LinearLayout
             android:id="@+id/scrollView2"
@@ -191,7 +200,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/imageView">
+            app:layout_constraintTop_toBottomOf="@+id/appbar">
 
             <EditText
                 android:id="@+id/editTextTextPersonName"
@@ -441,5 +450,21 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
+    <!--
+    Very Important
+    Should Always be at the end of the drawer
+    if not done properly
+    1 - on item Selected listener wont work
+    2 - swipe right to left wont work
+    -->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header_main"
+        app:menu="@menu/menu_sidebar"
+        />
 
 </androidx.drawerlayout.widget.DrawerLayout>
